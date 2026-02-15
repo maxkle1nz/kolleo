@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy e Termini di Servizio di KOLLEO — Il tuo collega digitale">
+    <title>Privacy Policy — KOLLEO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --gradient-start: #4F46E5;
+            --gradient-end: #7C3AED;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7b;
+            --border-color: #2a2a3a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Header */
+        .page-header {
+            padding: 140px 0 60px;
+            text-align: center;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .page-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .last-updated {
+            margin-top: 16px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Content */
+        .content {
+            padding: 60px 0 100px;
+        }
+
+        .content section {
+            margin-bottom: 48px;
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: var(--text-primary);
+        }
+
+        .content p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .content ul, .content ol {
+            margin: 16px 0;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        .content a {
+            color: var(--gradient-start);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .content a:hover {
+            color: var(--gradient-end);
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+
+        .highlight-box.important {
+            border-color: var(--gradient-start);
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .highlight-box h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc {
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 48px;
+        }
+
+        .toc h3 {
+            margin: 0 0 16px 0;
+            font-size: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--gradient-start);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 48px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab {
+            padding: 16px 32px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            color: var(--text-primary);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer-italy {
+            margin-top: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .tabs {
+                flex-direction: column;
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .tab {
+                text-align: left;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .tab:last-child {
+                border-bottom: none;
+            }
+
+            .tab.active::after {
+                display: none;
+            }
+
+            .tab.active {
+                background: rgba(79, 70, 229, 0.15);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo gradient-text">KOLLEO</a>
+            <a href="index.html#waitlist" class="nav-cta gradient-bg">Richiedi Accesso</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="gradient-text">Privacy e Termini</h1>
+            <p class="subtitle">La trasparenza è alla base della nostra relazione</p>
+            <p class="last-updated">Ultimo aggiornamento: 15 Febbraio 2026</p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+        <div class="container">
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" data-tab="privacy">Privacy Policy</button>
+                <button class="tab" data-tab="termini" id="termini">Termini di Servizio</button>
+            </div>
+
+            <!-- Privacy Policy -->
+            <div class="tab-content active" id="privacy-content">
+                <div class="toc">
+                    <h3>📋 Indice</h3>
+                    <ul>
+                        <li><a href="#titolare">1. Titolare del Trattamento</a></li>
+                        <li><a href="#dati-raccolti">2. Dati Raccolti</a></li>
+                        <li><a href="#finalita">3. Finalità del Trattamento</a></li>
+                        <li><a href="#base-giuridica">4. Base Giuridica</a></li>
+                        <li><a href="#conservazione">5. Conservazione dei Dati</a></li>
+                        <li><a href="#condivisione">6. Condivisione dei Dati</a></li>
+                        <li><a href="#diritti">7. I Tuoi Diritti</a></li>
+                        <li><a href="#sicurezza">8. Sicurezza</a></li>
+                        <li><a href="#cookie">9. Cookie</a></li>
+                        <li><a href="#contatti">10. Contatti</a></li>
+                    </ul>
+                </div>
+
+                <section id="titolare">
+                    <h2>1. Titolare del Trattamento</h2>
+                    <p>
+                        Il Titolare del trattamento dei dati personali è <strong>KOLLEO</strong>, 
+                        con sede in Italia.
+                    </p>
+                    <p>
+                        Per qualsiasi comunicazione relativa al trattamento dei tuoi dati personali, 
+                        puoi contattarci all'indirizzo: <a href="mailto:privacy@kolleo.it">privacy@kolleo.it</a>
+                    </p>
+                </section>
+
+                <section id="dati-raccolti">
+                    <h2>2. Dati Raccolti</h2>
+                    <p>Raccogliamo le seguenti categorie di dati personali:</p>
+                    
+                    <h3>Dati forniti direttamente dall'utente</h3>
+                    <ul>
+                        <li><strong>Dati di registrazione:</strong> nome, cognome, email, professione, città</li>
+                        <li><strong>Dati di contatto WhatsApp:</strong> numero di telefono</li>
+                        <li><strong>Contenuti delle conversazioni:</strong> messaggi scambiati con KOLLEO</li>
+                        <li><strong>Dati collegati ai servizi:</strong> email, eventi calendario, documenti creati</li>
+                    </ul>
+
+                    <h3>Dati raccolti automaticamente</h3>
+                    <ul>
+                        <li><strong>Dati tecnici:</strong> indirizzo IP, tipo di browser, sistema operativo</li>
+                        <li><strong>Dati di utilizzo:</strong> data e ora di accesso, funzionalità utilizzate</li>
+                    </ul>
+
+                    <div class="highlight-box important">
+                        <h4>⚠️ Importante</h4>
+                        <p>
+                            Non raccogliamo dati sensibili (dati sulla salute, orientamento sessuale, 
+                            opinioni politiche, dati biometrici) salvo quanto strettamente necessario 
+                            per l'erogazione del servizio e sempre con il tuo consenso esplicito.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="finalita">
+                    <h2>3. Finalità del Trattamento</h2>
+                    <p>I tuoi dati personali sono trattati per le seguenti finalità:</p>
+                    <ul>
+                        <li><strong>Erogazione del servizio:</strong> gestione dell'assistente AI, risposta alle tue richieste, creazione di documenti</li>
+                        <li><strong>Gestione dell'account:</strong> registrazione, autenticazione, supporto clienti</li>
+                        <li><strong>Comunicazioni di servizio:</strong> notifiche tecniche, aggiornamenti importanti</li>
+                        <li><strong>Miglioramento del servizio:</strong> analisi aggregate e anonime per ottimizzare l'esperienza</li>
+                        <li><strong>Marketing (con consenso):</strong> newsletter, offerte promozionali</li>
+                        <li><strong>Obblighi legali:</strong> adempimenti fiscali e normativi</li>
+                    </ul>
+                </section>
+
+                <section id="base-giuridica">
+                    <h2>4. Base Giuridica</h2>
+                    <p>Il trattamento dei tuoi dati si basa sulle seguenti basi giuridiche ai sensi del GDPR:</p>
+                    <ul>
+                        <li><strong>Esecuzione del contratto (Art. 6.1.b):</strong> per fornirti il servizio KOLLEO</li>
+                        <li><strong>Consenso (Art. 6.1.a):</strong> per marketing e comunicazioni promozionali</li>
+                        <li><strong>Legittimo interesse (Art. 6.1.f):</strong> per migliorare il servizio e prevenire frodi</li>
+                        <li><strong>Obbligo legale (Art. 6.1.c):</strong> per adempiere a obblighi di legge</li>
+                    </ul>
+                </section>
+
+                <section id="conservazione">
+                    <h2>5. Conservazione dei Dati</h2>
+                    <p>I tuoi dati personali sono conservati per il tempo strettamente necessario:</p>
+                    <ul>
+                        <li><strong>Dati dell'account:</strong> per tutta la durata del rapporto contrattuale e fino a 5 anni dopo la cessazione</li>
+                        <li><strong>Conversazioni WhatsApp:</strong> 90 giorni (salvo backup espliciti dell'utente)</li>
+                        <li><strong>Documenti generati:</strong> 12 mesi dalla creazione</li>
+                        <li><strong>Dati di fatturazione:</strong> 10 anni (obblighi fiscali)</li>
+                        <li><strong>Dati di marketing:</strong> fino alla revoca del consenso</li>
+                    </ul>
+                    <p>
+                        Puoi richiedere la cancellazione anticipata dei tuoi dati in qualsiasi momento, 
+                        salvo obblighi legali di conservazione.
+                    </p>
+                </section>
+
+                <section id="condivisione">
+                    <h2>6. Condivisione dei Dati</h2>
+                    <p>I tuoi dati NON vengono venduti a terzi. Possono essere condivisi solo con:</p>
+                    <ul>
+                        <li><strong>Fornitori di servizi tecnici:</strong> hosting, elaborazione AI (con accordi di protezione dati)</li>
+                        <li><strong>Processori di pagamento:</strong> per la gestione delle transazioni</li>
+                        <li><strong>Autorità competenti:</strong> quando richiesto dalla legge</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4>🔒 Garanzie per i trasferimenti</h4>
+                        <p>
+                            Eventuali trasferimenti di dati fuori dall'UE avvengono solo verso paesi con 
+                            decisione di adeguatezza della Commissione Europea o con garanzie appropriate 
+                            (Clausole Contrattuali Standard).
+                        </p>
+                    </div>
+
+                    <div class="highlight-box important">
+                        <h4>🤖 Dati e Intelligenza Artificiale</h4>
+                        <p>
+                            I tuoi dati personali e le tue conversazioni <strong>NON vengono utilizzati 
+                            per addestrare modelli di intelligenza artificiale</strong>. Il servizio AI 
+                            utilizza i tuoi dati esclusivamente per rispondere alle tue richieste in tempo reale.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="diritti">
+                    <h2>7. I Tuoi Diritti</h2>
+                    <p>Ai sensi del GDPR, hai i seguenti diritti:</p>
+                    <ul>
+                        <li><strong>Accesso:</strong> ottenere conferma del trattamento e copia dei tuoi dati</li>
+                        <li><strong>Rettifica:</strong> correggere dati inesatti o incompleti</li>
+                        <li><strong>Cancellazione:</strong> richiedere la cancellazione dei tuoi dati ("diritto all'oblio")</li>
+                        <li><strong>Limitazione:</strong> limitare il trattamento in determinate circostanze</li>
+                        <li><strong>Portabilità:</strong> ricevere i tuoi dati in formato strutturato e trasferirli</li>
+                        <li><strong>Opposizione:</strong> opporti al trattamento per motivi legittimi</li>
+                        <li><strong>Revoca del consenso:</strong> ritirare il consenso in qualsiasi momento</li>
+                    </ul>
+                    <p>
+                        Per esercitare i tuoi diritti, contattaci a 
+                        <a href="mailto:privacy@kolleo.it">privacy@kolleo.it</a>. 
+                        Risponderemo entro 30 giorni.
+                    </p>
+                    <p>
+                        Hai inoltre il diritto di proporre reclamo al <strong>Garante per la Protezione 
+                        dei Dati Personali</strong> (www.garanteprivacy.it).
+                    </p>
+                </section>
+
+                <section id="sicurezza">
+                    <h2>8. Sicurezza</h2>
+                    <p>Adottiamo misure tecniche e organizzative per proteggere i tuoi dati:</p>
+                    <ul>
+                        <li>Crittografia dei dati in transito (TLS/SSL) e a riposo (AES-256)</li>
+                        <li>Accesso limitato al personale autorizzato</li>
+                        <li>Monitoraggio continuo dei sistemi</li>
+                        <li>Backup regolari e piani di disaster recovery</li>
+                        <li>Formazione del personale sulla protezione dei dati</li>
+                    </ul>
+                </section>
+
+                <section id="cookie">
+                    <h2>9. Cookie</h2>
+                    <p>
+                        Questo sito utilizza solo cookie tecnici necessari al funzionamento. 
+                        Non utilizziamo cookie di profilazione o marketing senza il tuo consenso.
+                    </p>
+                    <ul>
+                        <li><strong>Cookie tecnici:</strong> necessari per il funzionamento del sito</li>
+                        <li><strong>Cookie analitici (anonimizzati):</strong> per statistiche aggregate</li>
+                    </ul>
+                </section>
+
+                <section id="contatti">
+                    <h2>10. Contatti</h2>
+                    <p>Per qualsiasi domanda sulla privacy:</p>
+                    <ul>
+                        <li><strong>Email:</strong> <a href="mailto:privacy@kolleo.it">privacy@kolleo.it</a></li>
+                        <li><strong>Supporto:</strong> <a href="mailto:supporto@kolleo.it">supporto@kolleo.it</a></li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Termini di Servizio -->
+            <div class="tab-content" id="termini-content">
+                <section>
+                    <h2>1. Accettazione dei Termini</h2>
+                    <p>
+                        Utilizzando KOLLEO, accetti integralmente questi Termini di Servizio. 
+                        Se non accetti, non utilizzare il servizio.
+                    </p>
+                    <p>
+                        KOLLEO è un servizio fornito da un team italiano e rivolto a professionisti 
+                        che desiderano un assistente AI su WhatsApp per gestire attività quotidiane.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>2. Descrizione del Servizio</h2>
+                    <p>KOLLEO è un assistente AI accessibile via WhatsApp che offre:</p>
+                    <ul>
+                        <li>Gestione email e calendario</li>
+                        <li>Creazione di preventivi e proformas</li>
+                        <li>Generazione di documenti PDF</li>
+                        <li>Ricerca di informazioni verificate</li>
+                        <li>Assistenza quotidiana (meteo, promemoria, calcoli)</li>
+                    </ul>
+                    <p>
+                        Il servizio è fornito "così com'è" e può essere modificato o aggiornato 
+                        senza preavviso per migliorarne le funzionalità.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>3. Registrazione e Account</h2>
+                    <p>Per utilizzare KOLLEO devi:</p>
+                    <ul>
+                        <li>Avere almeno 18 anni</li>
+                        <li>Fornire informazioni accurate e veritiere</li>
+                        <li>Mantenere riservate le credenziali di accesso</li>
+                        <li>Essere responsabile di tutte le attività svolte tramite il tuo account</li>
+                    </ul>
+                    <p>
+                        Ci riserviamo il diritto di sospendere o terminare account che violano 
+                        questi termini o le leggi applicabili.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>4. Prezzi e Pagamenti</h2>
+                    <div class="highlight-box">
+                        <h4>💰 Piano Professionale</h4>
+                        <p>
+                            <strong>€99/mese</strong> (Early adopter: €79/mese per i primi 3 mesi)<br>
+                            Prova gratuita di 3 giorni senza carta di credito.
+                        </p>
+                    </div>
+                    <ul>
+                        <li>I prezzi sono in Euro e includono IVA ove applicabile</li>
+                        <li>Il pagamento è mensile anticipato</li>
+                        <li>Puoi cancellare in qualsiasi momento</li>
+                        <li>Non sono previsti rimborsi per periodi parziali</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>5. Uso Consentito</h2>
+                    <p>Ti impegni a utilizzare KOLLEO solo per scopi leciti. È vietato:</p>
+                    <ul>
+                        <li>Utilizzare il servizio per attività illegali o fraudolente</li>
+                        <li>Tentare di accedere a sistemi non autorizzati</li>
+                        <li>Trasmettere malware, virus o codice dannoso</li>
+                        <li>Violare diritti di proprietà intellettuale di terzi</li>
+                        <li>Utilizzare il servizio per molestie, spam o diffamazione</li>
+                        <li>Rivendere o condividere l'accesso al servizio</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>6. Proprietà Intellettuale</h2>
+                    <p>
+                        KOLLEO, il suo logo, il software e i contenuti sono di nostra proprietà 
+                        o concessi in licenza. Non ottieni alcun diritto di proprietà sul servizio.
+                    </p>
+                    <p>
+                        I contenuti che crei tramite KOLLEO (documenti, email, ecc.) restano 
+                        di tua proprietà.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>7. Limitazioni di Responsabilità</h2>
+                    <p>
+                        KOLLEO è fornito "così com'è". Non garantiamo che il servizio sia 
+                        privo di errori, interruzioni o perdite di dati.
+                    </p>
+                    <ul>
+                        <li>Non siamo responsabili per decisioni prese sulla base delle risposte AI</li>
+                        <li>L'AI può commettere errori — verifica sempre le informazioni critiche</li>
+                        <li>Non siamo responsabili per danni indiretti o consequenziali</li>
+                        <li>La nostra responsabilità massima è limitata ai canoni pagati negli ultimi 12 mesi</li>
+                    </ul>
+
+                    <div class="highlight-box important">
+                        <h4>⚠️ Avvertenza Importante</h4>
+                        <p>
+                            KOLLEO è un assistente AI che può commettere errori. Non sostituisce 
+                            consulenza professionale (legale, fiscale, medica). Verifica sempre 
+                            le informazioni importanti con un professionista qualificato.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>8. Cancellazione e Recesso</h2>
+                    <p>Puoi cancellare il tuo abbonamento in qualsiasi momento:</p>
+                    <ul>
+                        <li>Scrivendo a KOLLEO su WhatsApp: "Voglio cancellare il mio abbonamento"</li>
+                        <li>Inviando email a <a href="mailto:supporto@kolleo.it">supporto@kolleo.it</a></li>
+                    </ul>
+                    <p>
+                        La cancellazione è effettiva alla fine del periodo di fatturazione corrente. 
+                        Puoi continuare a usare il servizio fino a quella data.
+                    </p>
+                    <p>
+                        Ai sensi del Codice del Consumo, hai diritto di recesso entro 14 giorni 
+                        dall'attivazione per contratti conclusi a distanza, salvo che tu abbia 
+                        già utilizzato attivamente il servizio.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>9. Modifiche ai Termini</h2>
+                    <p>
+                        Possiamo modificare questi Termini in qualsiasi momento. Ti informeremo 
+                        via email o WhatsApp di modifiche sostanziali almeno 30 giorni prima 
+                        della loro entrata in vigore.
+                    </p>
+                    <p>
+                        Continuando a utilizzare il servizio dopo le modifiche, accetti i nuovi termini.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>10. Legge Applicabile e Foro Competente</h2>
+                    <p>
+                        Questi Termini sono regolati dalla legge italiana. Per qualsiasi 
+                        controversia è competente il Foro del luogo di residenza del consumatore, 
+                        ai sensi del Codice del Consumo.
+                    </p>
+                    <p>
+                        Per i professionisti e le aziende, è competente il Foro di Milano.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>11. Contatti</h2>
+                    <p>Per qualsiasi domanda su questi Termini:</p>
+                    <ul>
+                        <li><strong>Email:</strong> <a href="mailto:supporto@kolleo.it">supporto@kolleo.it</a></li>
+                        <li><strong>Legale:</strong> <a href="mailto:legale@kolleo.it">legale@kolleo.it</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo gradient-text">KOLLEO</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Funzionalità</a>
+                <a href="index.html#pricing">Prezzi</a>
+                <a href="index.html#waitlist">Richiedi Accesso</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOLLEO — Il tuo collega digitale</p>
+                <p class="footer-italy">Made in Italy 🇮🇹</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.dataset.tab;
+                document.getElementById(tabId + '-content').classList.add('active');
+            });
+        });
+
+        // Check URL hash for direct linking to termini
+        if (window.location.hash === '#termini') {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelector('[data-tab="termini"]').classList.add('active');
+            document.getElementById('termini-content').classList.add('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

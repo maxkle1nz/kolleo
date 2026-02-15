@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KOLLEO — Il tuo collega digitale. L'assistente AI che lavora con te su WhatsApp. Email, calendario, fatture, documenti — tutto in una chat.">
+    <meta name="keywords" content="assistente AI, WhatsApp, professionisti, commercialista, avvocato, fatturazione, KOLLEO">
+    <meta property="og:title" content="KOLLEO — Il tuo collega digitale">
+    <meta property="og:description" content="L'assistente AI che lavora con te su WhatsApp. Email, calendario, fatture, documenti — tutto in una chat.">
+    <meta property="og:type" content="website">
+    <title>KOLLEO — Il tuo collega digitale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --gradient-start: #4F46E5;
+            --gradient-end: #7C3AED;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7b;
+            --border-color: #2a2a3a;
+            --success: #10b981;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .gradient-border {
+            position: relative;
+            background: var(--bg-card);
+            border-radius: 16px;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(79, 70, 229, 0.15);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+        }
+
+        .waitlist-counter {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 24px;
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .counter-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .counter-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .counter-number {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Form Styles */
+        .hero-form {
+            padding: 32px;
+            position: relative;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .form-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gradient-start);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6b7b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 48px;
+        }
+
+        .form-group select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(79, 70, 229, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .form-success h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .form-success p {
+            color: var(--text-secondary);
+        }
+
+        #waitlist-form.hidden {
+            display: none;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(79, 70, 229, 0.15);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(124, 58, 237, 0.2));
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0.2;
+        }
+
+        .step h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .step-connector {
+            display: none;
+            position: absolute;
+            top: 32px;
+            right: -16px;
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        @media (min-width: 768px) {
+            .step:not(:last-child) .step-connector {
+                display: block;
+            }
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .proof-item {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .proof-item .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .proof-item h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .proof-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+        }
+
+        .pricing-card {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 48px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 24px;
+            right: -32px;
+            padding: 6px 40px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transform: rotate(45deg);
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            margin: 24px 0;
+        }
+
+        .pricing-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        .pricing-period {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .pricing-discount {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 100px;
+            color: var(--success);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1rem;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features .check {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(16, 185, 129, 0.15);
+            border-radius: 50%;
+            color: var(--success);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            padding: 18px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(79, 70, 229, 0.5);
+        }
+
+        .pricing-note {
+            margin-top: 16px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .faq-container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--gradient-start);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.2);
+            color: var(--gradient-start);
+            font-size: 18px;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 24px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer-italy {
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Focus styles */
+        :focus-visible {
+            outline: 2px solid var(--gradient-start);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo gradient-text">KOLLEO</div>
+            <a href="#waitlist" class="nav-cta gradient-bg">Richiedi Accesso</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge">
+                        <span>🔒</span>
+                        <span>Accesso esclusivo su invito</span>
+                    </div>
+                    <h1 class="gradient-text">KOLLEO</h1>
+                    <p class="hero-tagline">Il tuo collega digitale</p>
+                    <p class="hero-subtitle">
+                        L'assistente AI che lavora con te su WhatsApp. Email, calendario, fatture, documenti — tutto in una chat.
+                    </p>
+                    <div class="waitlist-counter">
+                        <div class="counter-dot"></div>
+                        <p class="counter-text">
+                            <span class="counter-number">147</span> professionisti in lista d'attesa
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="hero-form gradient-border" id="waitlist">
+                    <form id="waitlist-form" action="/api/waitlist" method="POST">
+                        <h2 class="form-title">Richiedi Accesso</h2>
+                        <p class="form-subtitle">Unisciti alla lista d'attesa per l'accesso anticipato</p>
+                        
+                        <div class="form-group">
+                            <label for="name">Nome e Cognome</label>
+                            <input type="text" id="name" name="name" placeholder="Mario Rossi" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="mario@studio.it" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profession">Professione</label>
+                                <select id="profession" name="profession" required>
+                                    <option value="" disabled selected>Seleziona...</option>
+                                    <option value="commercialista">Commercialista</option>
+                                    <option value="dentista">Dentista</option>
+                                    <option value="avvocato">Avvocato</option>
+                                    <option value="architetto">Architetto</option>
+                                    <option value="consulente">Consulente</option>
+                                    <option value="agenzia_immobiliare">Agenzia Immobiliare</option>
+                                    <option value="altro">Altro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="city">Città</label>
+                                <input type="text" id="city" name="city" placeholder="Milano" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn gradient-bg">Richiedi Accesso</button>
+                    </form>
+                    
+                    <div class="form-success" id="form-success">
+                        <div class="success-icon">✓</div>
+                        <h3>Perfetto!</h3>
+                        <p>Sei in lista. Ti contatteremo presto via email.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label gradient-text">FUNZIONALITÀ</span>
+                <h2 class="section-title">Cosa può fare KOLLEO per te</h2>
+                <p class="section-subtitle">
+                    Un assistente completo che si integra nel tuo flusso di lavoro quotidiano
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">📧</div>
+                    <h3>Email e Calendario</h3>
+                    <p>Legge, scrive e organizza le tue email. Gestisce il calendario.</p>
+                </div>
+                
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">🧾</div>
+                    <h3>Fatturazione</h3>
+                    <p>Crea proformas e preventivi direttamente dalla chat.</p>
+                </div>
+                
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">📄</div>
+                    <h3>Documenti PDF</h3>
+                    <p>Genera documenti professionali in pochi secondi.</p>
+                </div>
+                
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Ricerca Verificata</h3>
+                    <p>Informazioni accurate e verificate, mai inventate.</p>
+                </div>
+                
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">🌤️</div>
+                    <h3>Assistenza Quotidiana</h3>
+                    <p>Meteo, promemoria, traduzioni, calcoli.</p>
+                </div>
+                
+                <div class="feature-card gradient-border">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Sicuro e Privato</h3>
+                    <p>I tuoi dati protetti, conformità GDPR.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label gradient-text">INIZIA SUBITO</span>
+                <h2 class="section-title">Come funziona</h2>
+                <p class="section-subtitle">
+                    In pochi minuti avrai il tuo assistente personale su WhatsApp
+                </p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number gradient-bg">1</div>
+                    <h3>Richiedi accesso</h3>
+                    <p>Compila il form con i tuoi dati</p>
+                    <div class="step-connector"></div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number gradient-bg">2</div>
+                    <h3>Ricevi l'invito</h3>
+                    <p>Ti contattiamo via email</p>
+                    <div class="step-connector"></div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number gradient-bg">3</div>
+                    <h3>Attiva KOLLEO</h3>
+                    <p>Collegalo al tuo WhatsApp</p>
+                    <div class="step-connector"></div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number gradient-bg">4</div>
+                    <h3>Prova gratis</h3>
+                    <p>3 giorni completamente gratuiti</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="proof-grid">
+                <div class="proof-item">
+                    <div class="icon">🇮🇹</div>
+                    <h3>Team Italiano</h3>
+                    <p>Creato da un team italiano per professionisti italiani</p>
+                </div>
+                
+                <div class="proof-item">
+                    <div class="icon">🤖</div>
+                    <h3>AI all'Avanguardia</h3>
+                    <p>Basato su tecnologia AI all'avanguardia</p>
+                </div>
+                
+                <div class="proof-item">
+                    <div class="icon">✅</div>
+                    <h3>Testato in Produzione</h3>
+                    <p>Già testato da professionisti in produzione</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label gradient-text">PRICING</span>
+                <h2 class="section-title">Investimento semplice, valore enorme</h2>
+            </div>
+            
+            <div class="pricing-card gradient-border">
+                <div class="pricing-badge">Early Adopter</div>
+                <h3 class="pricing-title">Piano Professionale</h3>
+                
+                <div class="pricing-price">
+                    <span class="pricing-amount gradient-text">€99</span>
+                    <span class="pricing-period">/mese</span>
+                </div>
+                
+                <div class="pricing-discount">
+                    🎁 Primi 3 mesi: €79/mese
+                </div>
+                
+                <ul class="pricing-features">
+                    <li>
+                        <span class="check">✓</span>
+                        Accesso completo a tutte le funzionalità
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Email, calendario, fatture illimitate
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Generazione documenti PDF
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Ricerca web verificata
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Supporto prioritario
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Aggiornamenti continui
+                    </li>
+                </ul>
+                
+                <a href="#waitlist" class="pricing-cta gradient-bg">3 giorni gratis — senza carta di credito</a>
+                <p class="pricing-note">Cancella quando vuoi. Nessun vincolo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label gradient-text">FAQ</span>
+                <h2 class="section-title">Domande frequenti</h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Cos'è KOLLEO?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            KOLLEO è il tuo collega digitale: un assistente AI che lavora direttamente su WhatsApp. Ti aiuta con email, calendario, fatturazione, documenti e molto altro. Tutto in una chat semplice e veloce, senza app da installare.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Come funziona su WhatsApp?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Dopo l'attivazione, KOLLEO diventa un contatto sul tuo WhatsApp. Gli scrivi come a un collega: "Scrivi un'email al cliente X", "Crea un preventivo per Y", "Cosa ho in agenda domani?". Lui risponde e agisce per te.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>I miei dati sono al sicuro?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Assolutamente sì. KOLLEO è conforme al GDPR. I tuoi dati sono criptati, non vengono condivisi con terzi e non vengono usati per addestrare AI. Hai sempre il controllo completo e puoi richiedere la cancellazione in qualsiasi momento.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Posso provare gratis?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sì! Offriamo 3 giorni di prova gratuita senza bisogno di inserire carta di credito. Così puoi testare tutte le funzionalità e decidere con calma se KOLLEO fa per te.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Come cancello l'abbonamento?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Puoi cancellare in qualsiasi momento direttamente dalla chat con KOLLEO o via email. Nessuna penale, nessun vincolo. La cancellazione è immediata e i tuoi dati vengono eliminati su richiesta.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo gradient-text">KOLLEO</div>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="privacy.html#termini">Termini di Servizio</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOLLEO — Il tuo collega digitale</p>
+                <p class="footer-italy">Made in Italy 🇮🇹</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Waitlist Form Handler
+        document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Disable submit button during submission
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Invio in corso...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Attempt to POST to API
+                const response = await fetch('/api/waitlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Show success regardless (for now, will wire up later)
+                showSuccess();
+            } catch (error) {
+                // Show success anyway for demo purposes
+                showSuccess();
+            }
+            
+            function showSuccess() {
+                form.classList.add('hidden');
+                document.getElementById('form-success').classList.add('show');
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .step, .proof-item, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add subtle parallax to hero
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero');
+                    if (hero && scrolled < window.innerHeight) {
+                        hero.style.backgroundPosition = `center ${scrolled * 0.5}px`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+</html>
