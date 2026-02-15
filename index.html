@@ -1180,7 +1180,15 @@
             
             const form = this;
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+            const raw = Object.fromEntries(formData.entries());
+            
+            // Map form field names to API field names
+            const data = {
+                nome: raw.name || '',
+                email: raw.email || '',
+                professione: raw.profession || '',
+                citta: raw.city || ''
+            };
             
             // Disable submit button during submission
             const submitBtn = form.querySelector('.submit-btn');
