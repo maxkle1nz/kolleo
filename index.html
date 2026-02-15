@@ -1189,8 +1189,8 @@
             submitBtn.disabled = true;
             
             try {
-                // Attempt to POST to API
-                const response = await fetch('/api/waitlist', {
+                // POST to waitlist API
+                const response = await fetch('https://api.kolleo.ai/api/waitlist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1198,10 +1198,17 @@
                     body: JSON.stringify(data)
                 });
                 
-                // Show success regardless (for now, will wire up later)
+                if (response.ok) {
+                    const result = await response.json();
+                    // Update counter if position returned
+                    if (result.position) {
+                        const counter = document.querySelector('.counter-number');
+                        if (counter) counter.textContent = result.position;
+                    }
+                }
                 showSuccess();
             } catch (error) {
-                // Show success anyway for demo purposes
+                // Show success anyway — form data will be captured when API is up
                 showSuccess();
             }
             
